@@ -1,0 +1,34 @@
+﻿@model List<SolutionEx5Gateaux.Models.Gateau>
+@{
+    Layout = "_Layout";
+    ViewBag.Titre = "Liste gâteau";
+}
+<body>
+    <div class="container">
+        <h1 class="m-3">@ViewData["Titre"]</h1>
+        <a type="button" class="btn btn-warning" href="~/Gateaux/Nouveau">Nouveau gâteau</a>
+        <div class="row mb-5">
+            @foreach (var gateau in Model)
+            {
+                <div class="card mx-2 mt-2" style="width: 18rem; border-color:sandybrown">
+                    <img src=@gateau.UrlImage class="rounded-5 img-fluid card-img-top mt-4" 
+                        alt="Image de gâteau original">
+                    <div class="card-body">
+                        <h5 class="card-title">@gateau.Nom</h5>
+                        <p class="card-text">@gateau.Description</p>
+                        <a class="btn btn-outline-warning" 
+                            asp-controller="Gateaux" 
+                            asp-action="DetailsGateau" 
+                            asp-route-id=@gateau.Id>
+                                Voir les ingrédients du gâteau @gateau.Nom
+                        </a>
+                        <a type="button" class="btn btn-secondary" href="~/Gateaux/Edit/@gateau.Id">Modifier</a>
+                        <a type="button" class="btn btn-danger" href="~/Gateaux/Supprimer/@gateau.Id" 
+                            onclick="return confirm('Voulez-vous vraiment le supprimer?');">Supprimer</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+           

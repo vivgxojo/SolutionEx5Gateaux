@@ -1,0 +1,26 @@
+﻿@model SolutionEx5Gateaux.Models.Gateau
+@{
+    Layout = "_Layout";
+    var ingredientsGateau = Model.Ingredients;
+    var urlGateau = Model.UrlImage;
+    ViewBag.Titre = "Détails gâteau";
+}
+<body>
+    <div class="container">
+        <h1 class="m-3">@ViewData["Titre"]</h1>
+        <div class="row mx-2 mt-4">
+            <div class="col-5">
+                <img src=@urlGateau class="rounded-5 img-fluid" alt="Image de gâteau original" />
+            </div>
+            <div class="col-5">
+                <h4>Ingrédients:</h4>
+                <p>@ingredientsGateau</p>
+            </div>
+        </div>
+        <div class="row mx-2 mt-5">
+            <a asp-controller="Gateaux" asp-action="Liste">Retour à la liste de gâteaux</a>
+        </div>
+    </div>
+</body>
+
+
