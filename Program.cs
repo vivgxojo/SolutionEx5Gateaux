@@ -1,10 +1,18 @@
+using Microsoft.EntityFrameworkCore;
 using SolutionEx5Gateaux.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IGateauRepository, MemGateauRepository>();
+
+builder.Services.AddDbContext<CatalogueGateaux>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:GateauxConnection"]);
+});
+
+//builder.Services.AddSingleton<IGateauRepository, MemGateauRepository>();
+builder.Services.AddScoped<IGateauRepository, BDGateauRepository>();
 
 var app = builder.Build();
 
@@ -27,5 +35,7 @@ app.MapControllerRoute(
  name: "default",
  pattern: "{controller=Gateaux}/{action=Liste}/{id?}"
 );
+
+InitBD.Seed(app);
 
 app.Run();
