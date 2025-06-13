@@ -1,7 +1,7 @@
 ﻿@model SolutionEx5Gateaux.Models.Gateau
 @{
     Layout = "_Layout";
-    var ingredientsGateau = Model.Ingredients;
+    //var ingredientsGateau = Model.Ingredients;
     var urlGateau = Model.UrlImage;
     ViewBag.Titre = "Détails gâteau";
 }
@@ -14,7 +14,15 @@
             </div>
             <div class="col-5">
                 <h4>Ingrédients:</h4>
-                <p>@ingredientsGateau</p>
+                @*<p>@ingredientsGateau</p>*@
+                <ul>
+                    @foreach(var ingredient in Model.IngredientsList)
+                    {
+                        <li>
+							@ingredient.Quantite @ingredient.Nom (@ingredient.Type) @ingredient.Prix $
+						</li>
+                    }
+                </ul>
             </div>
         </div>
         <div class="row mx-2 mt-5">

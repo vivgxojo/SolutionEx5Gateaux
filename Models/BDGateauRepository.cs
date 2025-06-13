@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SolutionEx5Gateaux.Models
 {
@@ -13,7 +14,10 @@ namespace SolutionEx5Gateaux.Models
 
         public IEnumerable<Gateau> MesGateaux
         {
-            get { return context.Gateau; }
+            //Include permet de remplire la propriété de navigation avec les ingrédients à partir des FK
+            get {
+                return context.Gateau.Include(g => g.IngredientsList);
+            }
         }        
 
         /// <summary>
@@ -24,7 +28,7 @@ namespace SolutionEx5Gateaux.Models
         /// <returns>Le gâteau avec l'identifiant gateauId</returns>
         public Gateau GetGateau(int gateauId)
         {
-            return context.Gateau.FirstOrDefault(g => g.Id == gateauId);
+            return context.Gateau.Include(g => g.IngredientsList).FirstOrDefault(g => g.Id == gateauId);
         }
 
         /// <summary>

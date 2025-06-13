@@ -7,7 +7,7 @@
             get { return _MesGateaux; }
         }
         private List<Gateau> _MesGateaux = new List<Gateau>()
-        {
+        {/*
             new Gateau{
                 Id = 0,
                 Nom = "Volcan et dinosaures",
@@ -61,7 +61,7 @@
                 UrlImage="/images/Halloween.jpg",
                 Description="Tarte panna cotta au chocolat, biscuits oreo, araignées en chocolat, glaçage au sucre",
                 Ingredients="Farine, oeufs, beurre, sucre, crème 35%, chocolat, etc."
-            }
+            }*/
         };
 
         /// <summary>

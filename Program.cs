@@ -13,6 +13,7 @@ builder.Services.AddDbContext<CatalogueGateaux>(options =>
 
 //builder.Services.AddSingleton<IGateauRepository, MemGateauRepository>();
 builder.Services.AddScoped<IGateauRepository, BDGateauRepository>();
+builder.Services.AddScoped<IIngredientRep, BDIngredientRep>();
 
 var app = builder.Build();
 

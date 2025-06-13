@@ -12,15 +12,23 @@
             {
                 <div class="card mx-2 mt-2" style="width: 18rem; border-color:sandybrown">
                     <img src=@gateau.UrlImage class="rounded-5 img-fluid card-img-top mt-4" 
-                        alt="Image de gâteau original">
+                    alt="Image de gâteau original">
                     <div class="card-body">
                         <h5 class="card-title">@gateau.Nom</h5>
                         <p class="card-text">@gateau.Description</p>
                         <a class="btn btn-outline-warning" 
-                            asp-controller="Gateaux" 
-                            asp-action="DetailsGateau" 
-                            asp-route-id=@gateau.Id>
-                                Voir les ingrédients du gâteau @gateau.Nom
+                        asp-controller="Gateaux" 
+                        asp-action="DetailsGateau" 
+                        asp-route-id=@gateau.Id>
+                            Voir les ingrédients du gâteau @gateau.Nom
+                           @*<ul>
+                                @foreach (var ingredient in gateau.IngredientsList)
+                                {
+                                    <li>
+                                        @ingredient.Quantite @ingredient.Nom (@ingredient.Type) @ingredient.Prix $
+                                    </li>
+                                }
+                            </ul>*@ 
                         </a>
                         <a type="button" class="btn btn-secondary" href="~/Gateaux/Edit/@gateau.Id">Modifier</a>
                         <a type="button" class="btn btn-danger" href="~/Gateaux/Supprimer/@gateau.Id" 

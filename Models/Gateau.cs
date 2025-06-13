@@ -10,8 +10,9 @@ namespace SolutionEx5Gateaux.Models
         [Display(Name = "Url de l'image")]
         public string UrlImage { get; set; }
         public string Description { get; set; }
-        public string Ingredients { get; set; } // Sera effacé
 
-        public List<Ingredient> IngredientsList = new List<Ingredient>(); //Navigation
+        //public string Ingredients { get; set; } // Sera effacé
+
+        public List<Ingredient> IngredientsList {get; set;} = new List<Ingredient>(); //Navigation
     }
 }

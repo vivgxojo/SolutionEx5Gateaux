@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolutionEx5Gateaux.Models;
 
@@ -10,9 +11,11 @@ using SolutionEx5Gateaux.Models;
 namespace SolutionEx5Gateaux.Migrations
 {
     [DbContext(typeof(CatalogueGateaux))]
-    partial class CatalogueGateauxModelSnapshot : ModelSnapshot
+    [Migration("20250613143917_suppStrIngredient")]
+    partial class suppStrIngredient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,6 +71,10 @@ namespace SolutionEx5Gateaux.Migrations
                         .HasColumnType("real");
 
                     b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unite")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
